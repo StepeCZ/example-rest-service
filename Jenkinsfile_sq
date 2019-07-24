@@ -1,0 +1,14 @@
+node {
+  stage('SCM-GitHub') {
+    git 'https://github.com/StepeCZ/example-rest-service.git'
+  }
+
+  stage('Build') {
+      bat 'mvn clean compile'
+  }
+
+  stage('Test') {
+      bat 'mvn test'
+  }
+
+}
