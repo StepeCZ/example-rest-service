@@ -11,4 +11,10 @@ node {
       bat 'mvn test'
   }
 
+  stage('SonarQube') {
+      def scannerHome = tool 'SonarScanner 4.0';
+      withSonarQubeEnv('Sonar7.9') { // If you have configured more than one global server connection, you can specify its name
+        bat "${scannerHome}/bin/sonar-scanner"
+      }
+    }
 }
